@@ -25,3 +25,7 @@ mongoose
   .catch((error) => {
     console.log("error occured", error);
   });
+
+app.get("/", (req, res) => {
+  res.send("Mern Todo");
+});
