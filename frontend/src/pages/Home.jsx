@@ -12,11 +12,14 @@ function Home() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const response = await fetch("http://localhost:3000/api/todos", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        "https://mern-todo-mkuk.onrender.com/api/todos",
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       const json = await response.json();
 
       dispatch({ type: "FETCH_TODOS", payload: json });

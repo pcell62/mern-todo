@@ -13,14 +13,17 @@ function Input() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/api/todos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify({ todo }),
-    });
+    const response = await fetch(
+      "https://mern-todo-mkuk.onrender.com/api/todos",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({ todo }),
+      }
+    );
 
     const json = await response.json();
 

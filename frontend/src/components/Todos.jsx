@@ -16,12 +16,15 @@ function Todos({ todo: t }) {
   const { user } = useContext(AuthContext);
 
   const deleteTodo = async () => {
-    const response = await fetch("http://localhost:3000/api/todos/" + t._id, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://mern-todo-mkuk.onrender.com/api/todos/" + t._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -35,11 +38,14 @@ function Todos({ todo: t }) {
   };
 
   const editTodo = async () => {
-    const response = await fetch("http://localhost:3000/api/todos/" + t._id, {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://mern-todo-mkuk.onrender.com/api/todos/" + t._id,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
@@ -54,7 +60,7 @@ function Todos({ todo: t }) {
 
   const markTodoAsDone = async () => {
     const response = await fetch(
-      "http://localhost:3000/api/todos/done/" + t._id,
+      "https://mern-todo-mkuk.onrender.com/api/todos/done/" + t._id,
       {
         method: "PATCH",
         headers: {
@@ -77,14 +83,17 @@ function Todos({ todo: t }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/api/todos/" + t._id, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify({ todo }),
-    });
+    const response = await fetch(
+      "https://mern-todo-mkuk.onrender.com/api/todos/" + t._id,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({ todo }),
+      }
+    );
 
     const json = await response.json();
 
